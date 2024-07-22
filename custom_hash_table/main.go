@@ -52,6 +52,7 @@ func (h *HashTable) Get(key string) interface{} {
 
 // When having collision, this Keys() method won't work correctly
 // According to the fixed index(0) for this example
+// Time complexity(collision) - 0(n^2), Time complexity(no collision) - 0(n), Space complexity - O(1)
 func (h *HashTable) Keys() []interface{} {
 	keys := make([]interface{}, 0)
 
@@ -59,20 +60,30 @@ func (h *HashTable) Keys() []interface{} {
 		if len(h.data[idx]) <= 0 {
 			continue
 		}
-		log.Println(h.data[idx])
-		keys = append(keys, h.data[idx][0][0])
+
+		// considering collision case
+		for innerIdx := range h.data[idx] {
+			if len(h.data[idx][innerIdx]) > 0 {
+				keys = append(keys, h.data[idx][innerIdx][0])
+			}
+		}
+		// without considering collision case
+		// keys = append(keys, h.data[idx][0][0])
 	}
 
 	return keys
 }
 
+// Play with the `size` of hashTable for collision case.
 func main() {
-	myHashTable := NewHashTable(500)
+	myHashTable := NewHashTable(2)
 	myHashTable.Set("grapes", 10000)
 	myHashTable.Set("apples", 9)
-	myHashTable.Set("pinapples", 10)
-	fmt.Println(myHashTable.Get("grapes"))    // Output: 10000
-	fmt.Println(myHashTable.Get("apples"))    // Output: 9
-	fmt.Println(myHashTable.Get("pinapples")) // Output: 9
-	fmt.Println(myHashTable.Keys())           // Output: 9
+	myHashTable.Set("pineapples", 10)
+	myHashTable.Set("snakes", 10)
+	fmt.Println(myHashTable.Get("grapes"))     // Output: 10000
+	fmt.Println(myHashTable.Get("apples"))     // Output: 9
+	fmt.Println(myHashTable.Get("pineapples")) // Output: 10
+	fmt.Println(myHashTable.Get("snakes"))     // Output: 10
+	fmt.Println("keys: ", myHashTable.Keys())  // Output: [grapes apples pineapples snakes]
 }
