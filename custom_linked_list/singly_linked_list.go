@@ -117,3 +117,22 @@ func (ll *LinkedList) display() {
 		current = current.next
 	}
 }
+
+func (ll *LinkedList) reverse() {
+	if ll.head.next == nil {
+		return
+	}
+
+	ll.tail = ll.head
+	first := ll.head
+	second := first.next
+	for second != nil {
+		tmp := second.next
+		second.next = first
+		first = second
+		second = tmp
+	}
+
+	ll.head.next = nil
+	ll.head = first
+}
