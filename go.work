@@ -1,0 +1,14 @@
+go 1.22.2
+
+use (
+	./binary_search
+	./custom_array
+	./custom_hash_table
+	./custom_linked_list
+	./find_first_repeated_numbers
+	./find_matches_in_2_arrs
+	./linear_search
+	./merge_sorted_array
+	./reverse_string
+	./two_crystal_balls
+)
