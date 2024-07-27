@@ -2,6 +2,7 @@ package main
 
 import "log"
 
+// visual => https://visualgo.net/en/list?slide=1
 func main() {
 	ll := NewLinkedList(0)
 	ll.append(1)

@@ -125,9 +125,16 @@ func (ll *DoublyLinkedList) traversalToIndex(index int) *DoublyNode {
 }
 
 func (ll *DoublyLinkedList) display() {
-	current := ll.head
-	for current != nil {
-		fmt.Printf("Address: %p, Value: %v, Prev: %p, Next: %p -> \n", current, current.value, current.prev, current.next)
-		current = current.next
+	log.Println("=== HEAD ===")
+	currentHead := ll.head
+	for currentHead != nil {
+		fmt.Printf("Address: %p, Value: %v, Prev: %p, Next: %p -> \n", currentHead, currentHead.value, currentHead.prev, currentHead.next)
+		currentHead = currentHead.next
+	}
+
+	log.Println("=== TAIL ===")
+	currentTail := ll.tail
+	if currentTail != nil {
+		fmt.Printf("Address: %p, Value: %v, Prev: %p, Next: %p -> \n", currentTail, currentTail.value, currentTail.prev, currentTail.next)
 	}
 }

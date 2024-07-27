@@ -111,10 +111,18 @@ func (ll *LinkedList) traversalToIndex(index int) *Node {
 }
 
 func (ll *LinkedList) display() {
-	current := ll.head
-	for current != nil {
-		fmt.Printf("Address: %p, Value: %v,  Next: %p -> \n", current, current.value, current.next)
-		current = current.next
+	log.Println("=== HEAD ===")
+
+	currentHead := ll.head
+	for currentHead != nil {
+		fmt.Printf("Address: %p, Value: %v,  Next: %p -> \n", currentHead, currentHead.value, currentHead.next)
+		currentHead = currentHead.next
+	}
+
+	log.Println("=== HEAD ===")
+	currentTail := ll.tail
+	if currentTail != nil {
+		fmt.Printf("Address: %p, Value: %v,  Next: %p -> \n", currentTail, currentTail.value, currentTail.next)
 	}
 }
 

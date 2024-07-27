@@ -5,6 +5,8 @@ use (
 	./custom_array
 	./custom_hash_table
 	./custom_linked_list
+	./custom_queue
+	./custom_stack
 	./find_first_repeated_numbers
 	./find_matches_in_2_arrs
 	./linear_search

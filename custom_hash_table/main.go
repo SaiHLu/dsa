@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// visual => https://www.cs.usfca.edu/~galles/visualization/OpenHash.html
+
 type HashTable struct {
 	data [][][2]interface{}
 }
